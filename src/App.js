@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getStats } from "./slices/statSlice";
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
+  const { data, loading } = useSelector((state) => state);
+  const stats = data.data;
+
+  useEffect(() => {
+    dispatch(getStats());
+  }, []);
+
+  console.log(stats);
+
+  if (loading) return <p>Loading....</p>;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>Total Sample Tested: {stats.totalSamplesTested}</p>
     </div>
   );
-}
+};
 
 export default App;
