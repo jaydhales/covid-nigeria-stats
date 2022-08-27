@@ -11,14 +11,13 @@ const App = () => {
     dispatch(getStats());
   }, []);
 
-  console.log(stats);
-
   if (loading) return <p>Loading....</p>;
-  return (
-    <div>
-      <p>Total Sample Tested: {stats.totalSamplesTested}</p>
-    </div>
-  );
+  if (stats)
+    return (
+      <div>
+        <p>Total Sample Tested: {stats.totalSamplesTested}</p>
+      </div>
+    );
 };
 
 export default App;
