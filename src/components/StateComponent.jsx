@@ -28,9 +28,9 @@ const StateComponent = () => {
           </option>
         ))}
       </select>
-      <div>
+      <div className="states-sect">
         {filteredState.map((data) => (
-          <div key={data.id}>
+          <div key={data._id} className="card">
             <p>{data.state}</p>
             <p>
               Confirmed Cases: <span>{data.confirmedCases}</span>

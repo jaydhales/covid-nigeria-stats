@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStats } from "./slices/statSlice";
 import StateComponent from "./components/StateComponent.jsx";
+import "./App.css";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -15,9 +16,9 @@ const App = () => {
   if (loading) return <p>Loading....</p>;
   if (stats)
     return (
-      <>
+      <main>
         <h2>Cases Of Covid-19 in Nigeria</h2>
-        <main>
+        <section>
           <p>
             Total Sample Tested: <span>{stats.totalSamplesTested}</span>
           </p>
@@ -33,13 +34,13 @@ const App = () => {
           <p>
             Total Death: <span>{stats.death}</span>
           </p>
-        </main>
+        </section>
 
         <section>
           <h3>Statistics by State</h3>
           <StateComponent />
         </section>
-      </>
+      </main>
     );
 };
 
